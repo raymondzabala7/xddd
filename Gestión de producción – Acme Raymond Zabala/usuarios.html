@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ACME - Usuarios</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <script>
+        customElements.define('main-nav', class extends HTMLElement {
+            connectedCallback() {
+                this.innerHTML = `<nav><div style="color:white; font-weight:bold;">ACME Producción</div><div><a href="usuarios.html" class="active">Usuarios</a><a href="inventario.html">Inventario</a><a href="produccion.html">Producción</a><a href="index.html" style="color:#ef4444;">Salir</a></div></nav>`;
+            }
+        });
+    </script>
+    <main-nav></main-nav>
+    <div class="container grid">
+        <div class="card">
+            <h3>Registrar / Editar Usuario</h3>
+            <form id="userForm">
+                <div class="form-group"><label>Número de Identificación</label><input type="text" id="userIdNum" required></div>
+                <div class="form-group"><label>Nombre Completo</label><input type="text" id="userName" required></div>
+                <div class="form-group">
+                    <label>Cargo</label>
+                    <select id="userRole"><option value="Administrador">Administrador</option><option value="Operario">Operario</option><option value="Supervisor">Supervisor</option></select>
+                </div>
+                <div class="form-group"><label>Contraseña</label><input type="password" id="userPass" required></div>
+                <div class="form-group"><label>Confirmar Contraseña</label><input type="password" id="userPassConfirm" required></div>
+                <button type="submit" class="btn">Guardar Usuario</button>
+            </form>
+        </div>
+        <div class="card">
+            <h3>Usuarios en el Sistema</h3>
+            <table><thead><tr><th>Identificación</th><th>Nombre</th><th>Cargo</th><th>Acciones</th></tr></thead><tbody id="usersTableBody"></tbody></table>
+        </div>
+    </div>
+    <script src="js/config.js"></script>
+    <script src="js/usuarios.js"></script>
+</body>
+</html>

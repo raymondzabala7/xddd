@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ACME - Inventario</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <script>
+        customElements.define('main-nav', class extends HTMLElement {
+            connectedCallback() {
+                this.innerHTML = `<nav><div style="color:white; font-weight:bold;">ACME Producción</div><div><a href="usuarios.html">Usuarios</a><a href="inventario.html" class="active">Inventario</a><a href="produccion.html">Producción</a><a href="index.html" style="color:#ef4444;">Salir</a></div></nav>`;
+            }
+        });
+    </script>
+    <main-nav></main-nav>
+    <div class="container grid">
+        <div>
+            <div class="card">
+                <h3>Crear Materia Prima o Producto Terminado</h3>
+                <form id="prodForm">
+                    <div class="form-group"><label>Código</label><input type="text" id="pCode" required></div>
+                    <div class="form-group"><label>Nombre</label><input type="text" id="pName" required></div>
+                    <div class="form-group"><label>Proveedor</label><input type="text" id="pProv" required></div>
+                    <div class="form-group"><label>Fórmula / Receta (Ej: {"M01":100, "M02":50})</label><input type="text" id="pForm" placeholder="Dejar vacío si es Materia Prima pura"></div>
+                    <button type="submit" class="btn">Registrar en Maestro</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Ingresar / Cargar Stock de Materia Prima</h3>
+                <form id="stockForm">
+                    <div class="form-group"><label>Código de Insumo</label><input type="text" id="sCode" required></div>
+                    <div class="form-group"><label>Cantidad a Agregar</label><input type="number" id="sQty" min="1" required></div>
+                    <button type="submit" class="btn">Incrementar Saldo</button>
+                </form>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Filtro de Productos e Inventario Real</h3>
+            <div class="form-group"><input type="text" id="search" placeholder="Escribe para buscar..."></div>
+            <table><thead><tr><th>Código</th><th>Nombre</th><th>Stock</th><th>Fórmula</th></tr></thead><tbody id="invTableBody"></tbody></table>
+        </div>
+    </div>
+    <script src="js/config.js"></script>
+    <script src="js/inventario.js"></script>
+</body>
+</html>

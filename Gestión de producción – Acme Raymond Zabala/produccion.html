@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ACME - Producción</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <script>
+        customElements.define('main-nav', class extends HTMLElement {
+            connectedCallback() {
+                this.innerHTML = `<nav><div style="color:white; font-weight:bold;">ACME Producción</div><div><a href="usuarios.html">Usuarios</a><a href="inventario.html">Inventario</a><a href="produccion.html" class="active">Producción</a><a href="index.html" style="color:#ef4444;">Salir</a></div></nav>`;
+            }
+        });
+    </script>
+    <main-nav></main-nav>
+    <div class="container grid">
+        <div class="card">
+            <h3>Nueva Orden de Producción</h3>
+            <form id="prodForm">
+                <div class="form-group"><label>Código del Producto a Fabricar</label><input type="text" id="exeCode" required></div>
+                <div class="form-group"><label>Cantidad de Unidades</label><input type="number" id="exeQty" min="1" required></div>
+                <button type="submit" class="btn">Procesar y Descontar</button>
+            </form>
+        </div>
+        <div class="card">
+            <h3>Resumen del Último Proceso</h3>
+            <div id="resumen" style="background:#f1f5f9; padding:15px; border-radius:6px; min-height:100px;">No se han registrado procesos todavía.</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h3>Historial de Procesos (Consecutivos)</h3>
+            <table><thead><tr><th>ID Consecutivo</th><th>Producto Creado</th><th>Cantidad</th></tr></thead><tbody id="historyBody"></tbody></table>
+        </div>
+    </div>
+    <script src="js/config.js"></script>
+    <script src="js/produccion.js"></script>
+</body>
+</html>

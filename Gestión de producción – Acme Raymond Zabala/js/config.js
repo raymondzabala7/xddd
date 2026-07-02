@@ -1,0 +1,1 @@
+window.URL_LOGIN = "https://raymond-68cd6-default-rtdb.firebaseio.com";
